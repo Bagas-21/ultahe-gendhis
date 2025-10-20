@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Seseorang yang Spesial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS untuk tampilan dan desain elegan */
+        :root {
+            --primary-color: #E6E6FA; /* Lavender Muda */
+            --secondary-color: #483D8B; /* Ungu Gelap */
+            --text-color: #333;
+            --accent-color: #FFD700; /* Emas untuk aksen */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: var(--text-color);
+            margin-bottom: 40px;
+            animation: slideIn 1.5s ease-out;
+        }
+
+        /* Styling Kartu Ucapan */
+        #card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            max-width: 600px;
+            text-align: left;
+            opacity: 0; /* Awalnya disembunyikan */
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        #card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #card h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        #card p {
+            line-height: 1.6;
+        }
+
+        /* Tombol Interaktif */
+        #gift-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        #gift-button:hover {
+            background-color: #5d4d9d;
+            transform: translateY(-2px);
+        }
+
+        /* Pop-up Hadiah Lucu */
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            animation: bounceIn 0.5s ease-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .popup-content .emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        /* Animasi CSS */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounceIn {
+            0%, 20%, 53%, 80%, 100% {
+                transition-timing-function: cubic-bezier(0.215, .61, .355, 1);
+                transform: translate3d(0, 0, 0);
+            }
+            40%, 43% {
+                transition-timing-function: cubic-bezier(0.755, .053, .855, .06);
+                transform: translate3d(0, -30px, 0);
+            }
+            70% {
+                transition-timing-function: cubic-bezier(0.755, .053, .855, .06);
+                transform: translate3d(0, -15px, 0);
+            }
+            90% {
+                transform: translate3d(0, -4px, 0);
+            }
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        
+        /* Animasi Kembang Api Halus (di latar belakang) */
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            opacity: 0;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: shoot 5s infinite;
+            z-index: -1;
+        }
+
+        .firework:nth-child(2) { animation-delay: 1.5s; background: #FF69B4; }
+        .firework:nth-child(3) { animation-delay: 3s; background: #ADD8E6; }
+
+        @keyframes shoot {
+            0% { top: 100%; left: 50%; opacity: 1; }
+            50% { top: 30%; opacity: 0.5; }
+            100% { top: 0%; left: 45%; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="firework" style="left: 20%;"></div>
+    <div class="firework" style="left: 80%;"></div>
+    <div class="firework" style="left: 50%;"></div>
+
+    <div class="container">
+        <header>
+            <h1>Happy Birthday, Gendhis Chan! 🥳</h1>
+            <p>Scroll ke bawah, ada sesuatu yang harus kamu lihat...</p>
+        </header>
+        
+        <div id="card">
+            <h2>Pesan Rahasia 🤫</h2>
+            <p>Selamat ulang tahun Gendhis! Hari ini spesial, dan kamu pantas mendapatkan hal-hal terbaik di dunia.</p>
+            <p>Aku harap kamu senyum saat melihat ini. Aku nggak jago bikin kue, jadi kubuatkan ini saja. Ingat, kamu nggak semakin tua dan semakin cantik anjayy, tapi level kerenmu yang naik! 😉</p>
+            <p>Semoga kamu selalu bahagia, sukses, dan mboh ws ate ngomong opo sek kelas. HBD yoooo </p>
+            
+            <p style="margin-top: 30px; font-style: italic;">— Dari seseorang yang sering diam-diam memperhatikan senyummu.</p>
+        </div>
+
+        <button id="gift-button">✨ Klaim "Hadiah" Rahasia ✨</button>
+    </div>
+
+    <div id="popup">
+        <div class="popup-content">
+            <span class="emoji">🎁</span>
+            <h3>Selamat!</h3>
+            <p>Hadiah virtualmu adalah:</p>
+            <p style="font-weight: bold; color: var(--secondary-color);">Daftar Putar Lagu Favoritmu & Janji Traktiran Kopi!</p>
+            <p style="font-size: 0.9em; margin-top: 15px;">(Boleh gasih tak dekatin dirimu)</p>
+            <button onclick="document.getElementById('popup').style.display='none'" id="close-button">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.getElementById('card');
+            
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, 1000); 
+
+            const giftButton = document.getElementById('gift-button');
+            const popup = document.getElementById('popup');
+
+            giftButton.addEventListener('click', () => {
+                popup.style.display = 'flex';
+                giftButton.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    giftButton.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+    </script>
+
+</body>
+</html>
